@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import propTypes from "prop-types";
 import AppContext from "./AppContext";
 
 function Provider({ children }) {
-  return <AppContext.Provider></AppContext.Provider>;
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [cartItems, setCartItems] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const value = {
+    products,
+    setProducts,
+    loading,
+    setLoading,
+    cartItems,
+    setCartItems,
+    isVisible,
+    setIsVisible,
+  };
+
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
 
 export default Provider;
